@@ -13,7 +13,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
 
-                        <li class="breadcrumb-item active">Add Category</li>
+                        <li class="breadcrumb-item active">Edit Category</li>
                     </ol>
                 </div>
             </div>
@@ -53,13 +53,14 @@
 
                           <div class="card-body">
 
-                              <h6 class="card-subtitle">Just add </h6>
+                              <h6 class="card-subtitle">Just edit </h6>
                               <form class="m-t-40"  id="category-form" enctype="multipart/form-data" >
 
                                 {!! csrf_field() !!}
+                                <input type="hidden" name="id" value="{{$category->id}}">
                                   <div class="form-group m-b-40">
                                       <label for="input1">Category Name</label>
-                                      <input type="text" class="form-control" value="{{old('title')}}" name="category_name" id="title" required >
+                                      <input type="text" class="form-control" value="{{$category->category_name}}" name="category_name" id="title"  >
                                       <span class="bar"></span>
                                       <span id="subject" class="category_error" style="color:red;"></span>
                                   </div>
@@ -74,11 +75,11 @@
                                   <div class="form-group m-b-40">
                                     <label for="input2"> Category Image</label>
 
-                                      <input type="file" name="image" value="{{old('images')}}" class="form-control"  required onchange="readURL(this);" >
-                                        <img id="blah" class="show_image" src="#" height="200" width="100" style="border: 1px solid #ddd;
+                                      <input type="file" name="image" value="{{$category->image}}"  class="form-control"   onchange="readURL(this);" >
+                                        <img id="blah" class="show_image" src="{{url('/assets/category')}}/{{$category->image}}" height="200" width="100" style="border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
-  width: 150px;display: none;"  alt="Your selected image..."  />
+  width: 150px;"  alt="Your selected image..."  />
                                       <span class="bar"></span>
                                       <span id="subject" class="image_error" style="color:red;"></span>
                                   </div>
@@ -139,7 +140,7 @@
                   var myForm = document.getElementById('category-form');
                   var formData = new FormData(myForm);
                     jQuery.ajax({
-                      url: "{{ url('/admin/addcategory') }}",
+                      url: "{{ url('/admin/updatecategory') }}",
                       method : 'post',
                       data: formData,
                       contentType: false,

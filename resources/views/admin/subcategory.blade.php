@@ -7,13 +7,13 @@
 
   <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Category</h3>
+                    <h3 class="text-themecolor">Subcategory</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
 
-                        <li class="breadcrumb-item active">Add Category</li>
+                        <li class="breadcrumb-item active">Add Subcategory</li>
                     </ol>
                 </div>
             </div>
@@ -57,8 +57,22 @@
                               <form class="m-t-40"  id="category-form" enctype="multipart/form-data" >
 
                                 {!! csrf_field() !!}
+
+
                                   <div class="form-group m-b-40">
-                                      <label for="input1">Category Name</label>
+                                      <label for="input1">Select Main Category</label>
+                                   <select name="maincategory" class="browser-default custom-select ">
+    <option value="" disabled selected="true">Choose your option</option>
+    @foreach($category_list as $category)
+  <option value="{{$category->id}}">{{$category->category_name}}</option>
+  @endforeach
+</select>
+                                      <span class="bar"></span>
+                                      <span id="subject" class="miancategory_error" style="color:red;"></span>
+                                  </div>
+
+                                  <div class="form-group m-b-40">
+                                      <label for="input1">Subcategory Name</label>
                                       <input type="text" class="form-control" value="{{old('title')}}" name="category_name" id="title" required >
                                       <span class="bar"></span>
                                       <span id="subject" class="category_error" style="color:red;"></span>
@@ -72,7 +86,7 @@
                                   </div> -->
 
                                   <div class="form-group m-b-40">
-                                    <label for="input2"> Category Image</label>
+                                    <label for="input2"> Subcategory Image</label>
 
                                       <input type="file" name="image" value="{{old('images')}}" class="form-control"  required onchange="readURL(this);" >
                                         <img id="blah" class="show_image" src="#" height="200" width="100" style="border: 1px solid #ddd;
@@ -139,7 +153,7 @@
                   var myForm = document.getElementById('category-form');
                   var formData = new FormData(myForm);
                     jQuery.ajax({
-                      url: "{{ url('/admin/addcategory') }}",
+                      url: "{{ url('/admin/addsubcategory') }}",
                       method : 'post',
                       data: formData,
                       contentType: false,
@@ -155,6 +169,9 @@
                            else if(result.message.image)
                             {
                               $('.image_error').html(result.message.image[0]);
+                            }
+                            else if(result.message.maincategory){
+                              $('.miancategory_error').html(result.message.maincategory[0]);
                             }
                           }
                         }

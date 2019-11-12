@@ -23,8 +23,10 @@
     <link href="{{url('/admin_asset')}}/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="{{url('/admin_asset')}}/css/colors/blue.css" id="theme" rel="stylesheet">
-    <!-- <link href="{{url('/admin_asset')}}/css/summernote.css" id="theme" rel="stylesheet"> -->
 
+    <!-- <link href="{{url('/admin_asset')}}/css/summernote.css" id="theme" rel="stylesheet"> -->
+<link href="{{url('/admin_asset')}}/plugins/dataTables/jquery.dataTables.min.css" id="theme" rel="stylesheet">
+    
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -92,7 +94,9 @@
     <!-- <script src="{{url('/admin_asset')}}/js/ckeditor.js"></script> -->
   <script src="{{url('/admin_asset')}}/js/summernote.js"></script>
   <script src="{{url('/admin_asset')}}/js/bootbox.js"></script>
+  <script src="{{url('/admin_asset')}}/plugins/datatables/jquery.dataTables.min.js"></script>
 
+  @stack('scripts')
     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script> -->
     <!-- <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script> -->
 </body>
