@@ -123,7 +123,7 @@
                     <ul aria-expanded="false" class="collapse">
                         <!-- <li><a href="{{url('/admin/category')}}">Add Category</a></li> -->
                         <li><a href="{{url('/admin/managecategory')}}">Main Category</a></li>
-                         <li><a href="{{url('/admin/subcategory')}}">Sub Category</a></li>
+                         <li><a href="{{url('/admin/managesubcategory')}}">Sub Category</a></li>
                        
                     </ul>
                 </li>

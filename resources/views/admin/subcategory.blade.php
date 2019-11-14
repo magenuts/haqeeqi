@@ -97,8 +97,12 @@
                                       <span id="subject" class="image_error" style="color:red;"></span>
                                   </div>
                                 
-                                  <button type="submit" class="btn btn-info " >Submit </button>
+                                   
+                               
+                                   <button type="submit" class="btn btn-info " >Submit </button>
                                   <button type="reset" class="btn btn-danger " id="register-button">Reset </button>
+                             
+                                 
 
                                   <!-- <div class="form-group m-b-40">
                                       <input type="text" class="form-control" id="input3">

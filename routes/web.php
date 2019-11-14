@@ -1,5 +1,5 @@
 <?php
-
+use App\Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,17 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('frontend.index');
+	$data['categories']=Category::with('subcategories')->get();
+
+    return view('frontend.index',$data);
 });
 	// Route::get('test/{password}',function($password){
 	// 	return \Hash::make($password);
 	// });
 Route::get('/admin','MainController@login');
-Route::group(['prefix'=>'admin'],function(){
+Route::post('admin/login','MainController@authenticate');	
+Route::get('admin/logout','MainController@logout');
+
+Route::group(['middleware' => ['AdminCheck'], 'prefix' => 'admin'],function(){
 	//Main Category Routes
-		Route::post('/login','MainController@authenticate');	
 		Route::get('/dashboard','MainController@dashboard');
-		Route::get('logout','MainController@logout');
 		Route::get('/category','CategoryController@index');		
 		Route::post('/addcategory','CategoryController@addcategory');
 		Route::get('/managecategory','CategoryController@managecategory');
@@ -34,6 +37,10 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('/subcategory','SubcategoryController@index');
 		Route::post('/addsubcategory','SubcategoryController@insert');
 		Route::get('/managesubcategory','SubcategoryController@managesubcategory');
+		Route::post('/deletesubcategory/{id}','SubcategoryController@destroy');
+		Route::get('/editsubcategory/{id}','SubcategoryController@edit');
+		Route::post('/updatesubcategory','SubcategoryController@update');
+
 
 //Database Backup Route
 		Route::get('/database_backup','MainController@databackup');

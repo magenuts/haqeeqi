@@ -128,23 +128,28 @@
         <!--*********************************************************************************************************-->
         <section class="content">
             <!--============ Categories =============================================================================-->
+
             <section class="block">
                 <div class="container">
                     <h2>Categories</h2>
                     <ul class="categories-list clearfix">
+                          @foreach($categories as $category)
+           <!--  {{$category}} -->
                         <li>
-                            <i class="category-icon">
-                                <img src="assets/icons/category-furniture-b.png" alt="">
+                            <i class="category-icon" style="background-color:silver;">
+                                <img src="{{url('/assets/category')}}/{{$category->image}}" alt="">
                             </i>
-                            <h3><a href="#">Furniture</a></h3>
+                            <h3><a href="#">{{$category->category_name}}</a></h3>
                             <div class="sub-categories">
-                                <a href="#">Beds</a>
-                                <a href="#">Sofas</a>
-                                <a href="#">Garden</a>
+                                @foreach($category->subcategories->take(2) as $subcategory)
+                                <a href="#">{{$subcategory->category_name}}</a>
+                                @endforeach
                             </div>
                         </li>
+            @endforeach
+
                         <!--end category item-->
-                        <li>
+                        <!-- <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-pets-b.png" alt="">
                             </i>
@@ -154,9 +159,9 @@
                                 <a href="#">Cats</a>
                                 <a href="#">Exotic</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
-                        <li>
+                       <!--  <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-real-estate-b.png" alt="">
                             </i>
@@ -165,9 +170,9 @@
                                 <a href="#">Houses</a>
                                 <a href="#">Apartments</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
-                        <li>
+                       <!--  <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-jobs-b.png" alt="">
                             </i>
@@ -176,10 +181,10 @@
                                 <a href="#">Find Job</a>
                                 <a href="#">Offer Job</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
 
-                        <li>
+                       <!--  <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-cars-b.png" alt="">
                             </i>
@@ -189,9 +194,9 @@
                                 <a href="#">Used</a>
                                 <a href="#">Rent</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
-                        <li>
+                       <!--  <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-mobile-b.png" alt="">
                             </i>
@@ -200,9 +205,9 @@
                                 <a href="#">Apple</a>
                                 <a href="#">Samsung</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
-                        <li>
+                      <!--   <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-cameras-b.png" alt="">
                             </i>
@@ -212,9 +217,9 @@
                                 <a href="#">Video</a>
                                 <a href="#">Lenses</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
-                        <li>
+                       <!--  <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-sport-b.png" alt="">
                             </i>
@@ -224,10 +229,10 @@
                                 <a href="#">Bike</a>
                                 <a href="#">Hockey</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
 
-                        <li>
+                       <!--  <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-electro-b.png" alt="">
                             </i>
@@ -237,9 +242,9 @@
                                 <a href="#">Radio</a>
                                 <a href="#">PC</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
-                        <li>
+                       <!--  <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-clothing-b.png" alt="">
                             </i>
@@ -248,9 +253,9 @@
                                 <a href="#">Shirts</a>
                                 <a href="#">Trousers</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
-                        <li>
+                        <!-- <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-books-b.png" alt="">
                             </i>
@@ -260,9 +265,9 @@
                                 <a href="#">History</a>
                                 <a href="#">Sci-Fi</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
-                        <li>
+                       <!--  <li>
                             <i class="category-icon">
                                 <img src="assets/icons/category-music-b.png" alt="">
                             </i>
@@ -272,7 +277,7 @@
                                 <a href="#">Techno</a>
                                 <a href="#">Folk</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!--end category item-->
                     </ul>
                     <!--end categories-list-->

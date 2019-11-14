@@ -95,7 +95,7 @@
   <script src="{{url('/admin_asset')}}/js/summernote.js"></script>
   <script src="{{url('/admin_asset')}}/js/bootbox.js"></script>
   <script src="{{url('/admin_asset')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-
+ 
   @stack('scripts')
     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script> -->
     <!-- <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script> -->

@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subcategory extends Model
 {
-    //
+    protected $table = 'subcategories';
+
+    public function categories() 
+    {
+        return $this->belongsTo('App\Category');
+    }
+
 }

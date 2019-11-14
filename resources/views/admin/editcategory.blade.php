@@ -169,6 +169,7 @@
                               $('.image_error').html('');
                               $('.category_error').html('');
                               $('.show_image').css('display','none');
+
                 }   
               });
 
