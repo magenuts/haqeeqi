@@ -48,3 +48,7 @@ Route::group(['middleware' => ['AdminCheck'], 'prefix' => 'admin'],function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+	
+	Route::get('/register','UserController@register');
+	Route::post('/registration','UserController@registration');
+	Route::get('/emailinfo','UserController@emailinfo');

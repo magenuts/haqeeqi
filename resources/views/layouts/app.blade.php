@@ -36,5 +36,6 @@
     <script src="assets/js/icheck.min.js"></script>
     <script src="assets/js/jquery.validate.min.js"></script>
     <script src="assets/js/custom.js"></script>
+    @stack('scripts')
 </body>
 </html>
