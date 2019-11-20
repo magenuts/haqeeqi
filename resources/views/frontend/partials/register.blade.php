@@ -63,7 +63,7 @@
                                         <input type="checkbox" name="newsletter" value="1">
                                         Receive Newsletter
                                     </label> -->
-                                    <button type="submit" id="register" class="btn btn-primary">Register</button>
+                                    <button type="submit" id="register" class="btn btn-primary login-form-submit"><i class="fa fa-spinner fa-spin show-spin "></i> Register</button>
                                 </div>
                             </form>
                             <hr>
@@ -90,6 +90,10 @@
         <script type="text/javascript">
             
            jQuery(document).ready(function(){
+            $(".show-spin").css({
+          "display": "none",
+
+        });
             $('.alert-danger').hide();
                 $('#email').keyup(function(){
                     // alert("hy");
@@ -97,6 +101,11 @@
                     });
                 
                 jQuery('#registerform').submit(function(e){
+                    $(this).attr("disabled", true);
+        $(".show-spin").css({
+          "display": "inline-block",
+
+        });
                   e.preventDefault();
                   $.ajaxSetup({
                     headers: {
@@ -117,6 +126,10 @@
                           if(result.validation==0){
                             if(result.message.email)
                             {
+                                $(".login-form-submit").attr("disabled", false);
+                  $(".show-spin").css({
+                   "display": "none",
+                 });
                               $('.email-feedback').html(result.message.email[0]);
                             }
                           
@@ -124,8 +137,11 @@
                         }
                         
                         else{
+                            $(".login-form-submit").attr("disabled", false);
+              $(".show-spin").show();
+
                          window.setTimeout(function() {
-                        window.location = 'emailinfo';
+                        window.location = './';
                         }, 2000);
 
 

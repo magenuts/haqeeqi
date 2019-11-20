@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Redirect;
 use App\User;
 use Auth;
+use Response;
 class MainController extends Controller
 {
     public function login(){
@@ -46,6 +47,25 @@ class MainController extends Controller
     	else{
     		return back()->with('login_feedback','Incorrect email or password');
     	}
+    }
+
+    public function getusers(){
+        $users = User::where('type','!=','admin')->latest('created_at')->get();
+
+        return view('admin.manageusers', compact('users'));
+    }
+
+    public function userstatus($id){
+        $user=User::find($id);
+        if($user){
+            if($user->is_verified == 0){
+                $user->is_verified=1;
+            }else if($user->is_verified==1){
+                $user->is_verified=0;
+            }
+            $user->save();
+            return Response::json(['success'=>'1','message'=>'User status has been changed']);
+        }
     }
 
     public function logout(){

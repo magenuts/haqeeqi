@@ -1,6 +1,79 @@
 @extends('layouts.app')
 @section('content')
     
+ @if(Session::has('passwordset'))
+<!-- Central Modal Medium Danger -->
+<div class="modal fade myModal" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Information</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+          <p>Congratulations!
+          You have successfully registered your account. For further procedure please login to the site.</p>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+       
+        <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Ok</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium Danger-->
+@elseif(Session::has('email_confirmation'))
+
+<div class="modal fade myModal" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Information</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+          <p>Congratulations!
+          Check your inbox to confirm your email address.</p>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+       
+        <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Ok</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+@endif
+
+
         <header class="hero">
             <div class="hero-wrapper">
                 <!--============ Secondary Navigation ===============================================================-->
@@ -1013,5 +1086,9 @@
 
         </section>
         @include('frontend.partials.footer')
-       
+        @push('scripts')
+       <script type="text/javascript">
+           $('.myModal').modal('show');
+       </script>
+       @endpush
 @endsection

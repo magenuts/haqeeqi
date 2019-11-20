@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('userimage')->nullable();
             $table->string('type')->nullable();
             $table->string('is_verified')->dafault('0');
+            $table->string('phone_verified')->dafault('0');
             $table->rememberToken();
             $table->timestamps();
         });

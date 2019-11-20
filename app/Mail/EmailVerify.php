@@ -29,7 +29,7 @@ class EmailVerify extends Mailable
      */
     public function build()
     {
-         return $this->from('usmananwar007@outlook.com')
+         return $this->from('ijaz.ali.pse@gmail.com')
         ->view('frontend.emails.verifyemail')
         ->with($this->verifyToken);
     }

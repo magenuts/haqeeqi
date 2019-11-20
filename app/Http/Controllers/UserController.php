@@ -12,6 +12,7 @@ use Validator;
 use Redirect;
 use App\Mail\EmailVerify;
 use Mail;
+
 class UserController extends Controller
 {
     public function register(){
@@ -21,7 +22,7 @@ class UserController extends Controller
     public function registration(Request $request){
     	 $rules = [
             
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'unique:users'],
 
         ];
         $messages = array(
@@ -52,5 +53,61 @@ class UserController extends Controller
 
     public function emailinfo(){
     	return view('frontend.emails.emailinfo');
+    }
+
+    public function setpassword(){
+    	return view('frontend.partials.setpassword');
+    }
+
+    public function set_password(Request $request){
+
+         $rules = [
+            
+        'password' => ['required', 'string', 'min:12', 'confirmed','regex:/^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@_$%^&*-]).{6,}$/'],
+            'password_confirmation' => ['required', 'string'],
+
+        ];
+        $messages = array(
+            'password.required' => 'Please enter your password',
+            'password.regex' => 'Password must include at least one letter, one number, and one character',
+            'password_confirmation.required'=>'Please enter password confirmaton field',
+        );
+         $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+           return Response::json(['success'=>'0','validation'=>'0','message'=>$validator->errors()]);
+        }else{
+            $user=User::where('email',$request->email)->first();
+            if($user){
+                $user->password=Hash::make($request->password);
+                $user->update();
+                Session::flash('passwordset','You have successfully set passwod for your account');
+                
+            }
+        }
+
+
+    }
+     public function verify(Request $request){
+    	
+        $token = $request->token;
+        $user = User::where('verifyToken', $token)->first();
+        if ($user) {
+        	Session::put('user_email',$user->email);
+            $user->is_verified = 1;
+            $user->update();
+             Session::flash('box_title', 'Thank you for signing up');
+            Session::flash('emailconfirmation', 'Your email is verified successfully. You can now set password for your account.');
+            return redirect('/setpassword');
+
+            // return view('frontend.partials.setpassword')->with('email',$email);
+            
+        }
+        else {
+            Session::flash('box_title', 'Sorry!');
+            Session::flash('email_confirmation', 'Your email verification link is invalid');
+
+            return redirect('/emailinfo');
+        }
     }
 }
