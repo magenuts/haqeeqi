@@ -57,3 +57,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/account/verify', 'UserController@verify');
 	Route::get('/setpassword','UserController@setpassword');
 	Route::post('/setpassword','UserController@set_password');
+	Route::get('/password','UserController@password');
+	Route::post('/login','UserController@userlogin');
+	Route::get('/logout','UserController@logout');
+

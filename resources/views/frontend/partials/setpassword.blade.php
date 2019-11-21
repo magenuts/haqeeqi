@@ -38,7 +38,7 @@
                     <div class="row justify-content-center">
 
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8">
-                            <form class="form clearfix" id="registerform" >
+                            <form class="form clearfix" id="passwordform" >
                                 <!-- <div class="form-group">
                                     <label for="name" class="col-form-label required">Your Name</label>
                                     <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required>
@@ -68,7 +68,7 @@
                                         <input type="checkbox" name="newsletter" value="1">
                                         Receive Newsletter
                                     </label> -->
-                                    <button type="submit" id="register" class="btn btn-primary"><i class="fa fa-spinner fa-spin show-spin "></i>Submit</button>
+                                    <button type="submit" id="register" class="btn btn-primary loginBtn"><i class="fa fa-spinner fa-spin show-spin "></i>Submit</button>
                                 </div>
                             </form>
                             <hr>
@@ -107,19 +107,19 @@
 
                     });
                 
-                jQuery('#registerform').submit(function(e){
+                jQuery('#passwordform').submit(function(e){
                   $(this).attr("disabled", true);
-        $(".show-spin").css({
-          "display": "inline-block",
+            $(".show-spin").css({
+              "display": "inline-block",
 
-        });
+            });
                   e.preventDefault();
                   $.ajaxSetup({
                     headers: {
                       'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                     }
                   });
-                  var myForm = document.getElementById('registerform');
+                  var myForm = document.getElementById('passwordform');
                   var formData = new FormData(myForm);
                     jQuery.ajax({
                       url: "{{ url('/') }}/setpassword",
@@ -133,14 +133,14 @@
                           if(result.validation==0){
                             if(result.message.password)
                             {
-                              (".login-form-submit").attr("disabled", false);
-                  $(".show-spin").css({
-                   "display": "none",
-                 });
+                              $(".loginBtn").attr("disabled", false);
+                              $(".show-spin").css({
+                               "display": "none",
+                             });
                               $('.password-feedback').html(result.message.password[0]);
                             }
                              if(result.message.password_confirmation){
-                              (".login-form-submit").attr("disabled", false);
+                              (".loginBtnt").attr("disabled", false);
                   $(".show-spin").css({
                    "display": "none",
                  });
@@ -151,7 +151,7 @@
                         }
                         
                         else{
-                          $(".login-form-submit").attr("disabled", false);
+                          $(".loginBtn").attr("disabled", false);
               $(".show-spin").show();
                          window.setTimeout(function() {
                          window.location.href = './';

@@ -35,35 +35,18 @@
                     <div class="row justify-content-center">
 
                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8">
-                            <form class="form clearfix" id="registerform">
-                                <!-- <div class="form-group">
-                                    <label for="name" class="col-form-label required">Your Name</label>
-                                    <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required>
-                                </div> -->
-                                <!--end form-group-->
+                            <form class="form clearfix"  action="{{url('/')}}/registration" method="post">
+                                
                                 {!! csrf_field() !!}
                                 <div class="form-group">
                                     <label for="email" class="col-form-label required">Email</label>
                                     <input name="email" type="email" class="form-control" id="email" placeholder="Your Email" value="{{old('email')}}">
-                                    <span id="subject" class="form-errors email-feedback" style="color:red;" ></span>
+                                    <span id="subject" class="form-errors" style="color:red;">{{ $errors->first('email') }}</span>
                                 </div>
-                                <!--end form-group-->
-                               <!--  <div class="form-group">
-                                    <label for="password" class="col-form-label required">Password</label>
-                                    <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
-                                </div> -->
-                                <!--end form-group-->
-                               <!--  <div class="form-group">
-                                    <label for="repeat_password" class="col-form-label required">Repeat Password</label>
-                                    <input name="repeat_password" type="password" class="form-control" id="repeat_password" placeholder="Repeat Password" required>
-                                </div> -->
-                                <!--end form-group-->
+                               
                                 <div class="d-flex justify-content-between align-items-baseline">
-                                    <!-- <label>
-                                        <input type="checkbox" name="newsletter" value="1">
-                                        Receive Newsletter
-                                    </label> -->
-                                    <button type="submit" id="register" class="btn btn-primary login-form-submit"><i class="fa fa-spinner fa-spin show-spin "></i> Register</button>
+                                  
+                                    <input type="submit" id="register" class="btn btn-primary login-form-submit" value="Submit"> 
                                 </div>
                             </form>
                             <hr>
@@ -86,75 +69,20 @@
        
         @include('frontend.partials.footer')
 
-       @push('scripts')
+        @push('scripts')
+
         <script type="text/javascript">
-            
-           jQuery(document).ready(function(){
-            $(".show-spin").css({
-          "display": "none",
-
-        });
-            $('.alert-danger').hide();
-                $('#email').keyup(function(){
+          
+          $(document).ready(function(){
+                            $('#email').keyup(function(){
                     // alert("hy");
-                    $('.email-feedback').html('');
+                    $('#subject').html('');
+                  
+
                     });
-                
-                jQuery('#registerform').submit(function(e){
-                    $(this).attr("disabled", true);
-        $(".show-spin").css({
-          "display": "inline-block",
+            });
 
-        });
-                  e.preventDefault();
-                  $.ajaxSetup({
-                    headers: {
-                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                    }
-                  });
-                  var myForm = document.getElementById('registerform');
-                  var formData = new FormData(myForm);
-                    jQuery.ajax({
-                      url: "{{ url('/') }}/registration",
-                      method : 'post',
-                      data: formData,
-                      contentType: false,
-                       cache: false,
-                       processData: false,
-                      success: function(result){
-                        if(result.success==0){
-                          if(result.validation==0){
-                            if(result.message.email)
-                            {
-                                $(".login-form-submit").attr("disabled", false);
-                  $(".show-spin").css({
-                   "display": "none",
-                 });
-                              $('.email-feedback').html(result.message.email[0]);
-                            }
-                          
-                          }
-                        }
-                        
-                        else{
-                            $(".login-form-submit").attr("disabled", false);
-              $(".show-spin").show();
-
-                         window.setTimeout(function() {
-                        window.location = './';
-                        }, 2000);
-
-
-               
-
-                        }
-
-                      }});
-                  });
-
-                 
-
-              });
         </script>
         @endpush
 @endsection
+

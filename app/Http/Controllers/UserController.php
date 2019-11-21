@@ -19,36 +19,61 @@ class UserController extends Controller
     	return view('frontend.partials.register');
     }
 
+    public function password(){
+            return view('frontend.partials.password');
+
+    }
     public function registration(Request $request){
-    	 $rules = [
+    	 $request->validate([
+        'email'=>'required',
+    
+    ]);
+
+         if($user=User::where('email',$request->email)->first()){
+            $email=$user->email;
+            Session::put('email',$email);
+            return redirect('/password');
+        }
+                else{
+                    $parts = explode("@", $request->email);
+                $username = $parts[0];
+                $user = User::create([
+                    'username'=>$username,
+                    'email' => $request->email,
+                    'type' => 'user',
+                    'verifyToken' => Hash::make(uniqid()),
+                     ]);
+                Mail::to($user->email)->send(new EmailVerify(['verifyToken' => $user->verifyToken]));
+                Session::flash('email_confirmation', 'Check your inbox to confirm your email address');
+                return redirect('/');
+                }
+        
+    }
+
+    public function userlogin(Request $request){
+        $request->validate([
+        'password'=>'required',
+    
+    ]);
+        $obj=User::where('email','=',$request->email)->first();
+        if($obj){
+            if(Hash::check($request->password,$obj->password)){
+
+                if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+                    // $data['user']=Auth::user();
+            return redirect('/');
+                    
+            }else{
+
+            return back()->with('login_error','Please input valid password');
+                
+            }
+        }else{
+            return back()->with('login_error','Please input valid password');
+
+        }
+    }
             
-            'email' => ['required', 'string', 'email', 'unique:users'],
-
-        ];
-        $messages = array(
-            'email.required' => 'Enter your email',
-            'email.email'=>'Please enter valid email',
-        );
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        if ($validator->fails()) {
-           return Response::json(['success'=>'0','validation'=>'0','message'=>$validator->errors()]);
-        }
-        else{
-        		$parts = explode("@", $request->email);
-				$username = $parts[0];
-        	 $user = User::create([
-        	 	 'username'=>$username,
-            'email' => $request->email,
-            'type' => 'user',
-            'verifyToken' => Hash::make(uniqid()),
-        ]);
-        	  Mail::to($user->email)->send(new EmailVerify(['verifyToken' => $user->verifyToken]));
-	        Session::flash('email_confirmation', 'Check your inbox to confirm your email address');
-        	  // return Response::json(['success' => '1','message' => 'Check your inbox to confirm your email address']);
-	        // return Redirect::to('/register')->with('email_confirmation','Check your inbox to confirm your email address');
-        }
     }
 
     public function emailinfo(){
@@ -109,5 +134,13 @@ class UserController extends Controller
 
             return redirect('/emailinfo');
         }
+    }
+
+     public function logout(){
+        if(Auth::check()){
+            Auth::logout();
+            Session::flush();   
+            return Redirect::to('/');
+        }   
     }
 }
