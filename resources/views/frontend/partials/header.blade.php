@@ -20,7 +20,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="register.html">
+                                <a href="{{url('/')}}/register">
                                     <i class="fa fa-pencil-square-o"></i>Register
                                 </a>
                             </li>
@@ -28,11 +28,12 @@
                         <!--end right-->
                     </div>
                     <!--end container-->
-                </div>  <div class="main-navigation">
+                </div> 
+                 <div class="main-navigation">
                     <div class="container">
                         <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
                             <a class="navbar-brand" href="index.html">
-                                <img src="assets/img/logo.png" alt="">
+                                <img src="{{url('/')}}/assets/img/logo.png" alt="">
                             </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>

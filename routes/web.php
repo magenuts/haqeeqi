@@ -26,6 +26,8 @@ Route::get('admin/logout','MainController@logout');
 Route::group(['middleware' => ['AdminCheck'], 'prefix' => 'admin'],function(){
 	//Main Category Routes
 		Route::get('/dashboard','MainController@dashboard');
+		 Route::get('/users', 'MainController@getusers');
+		 Route::post('/userstatus/{id}','MainController@userstatus');
 		Route::get('/category','CategoryController@index');		
 		Route::post('/addcategory','CategoryController@addcategory');
 		Route::get('/managecategory','CategoryController@managecategory');
@@ -42,9 +44,16 @@ Route::group(['middleware' => ['AdminCheck'], 'prefix' => 'admin'],function(){
 		Route::post('/updatesubcategory','SubcategoryController@update');
 
 
-//Database Backup Route
+//Database Backup Routes
 		Route::get('/database_backup','MainController@databackup');
 });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+	//Frontend Basic Routes
+	Route::get('/register','UserController@register');
+	Route::post('/registration','UserController@registration');
+	Route::get('/emailinfo','UserController@emailinfo');
+	Route::get('/account/verify', 'UserController@verify');
+	Route::get('/setpassword','UserController@setpassword');
+	Route::post('/setpassword','UserController@set_password');
