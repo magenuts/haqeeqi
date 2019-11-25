@@ -19,21 +19,21 @@
       </div>
 
       <div class="container-fluid">
-                  <div class="row">
+                  <!-- <div class="row"> -->
      
       <!-- <div class="col-md-2">
         <button type="button" class="btn waves-effect waves-light  btn-info del-button" data-toggle="modal" data-target="#exampleModal"
          style="margin-left:78px;">Add Category</button>
       </div> -->
-        <div class="col-md-2" >
- <a href="{{url('/admin/subcategory')}}" ><button type="button" class="btn waves-effect waves-light  btn-success "
-      >Add User</button></a>
+      <!--   <div class="col-md-2" >
+ <a href="{{url('/admin/addnewuser')}}" ><button type="button" class="btn waves-effect waves-light  btn-success "
+      >Add New User</button></a>
       </div>
       <div class="col-md-10">
    
       </div>
      
-    </div>
+    </div> -->
     <div class="row">
       <div class="col-md-6">
         @if (session('deletecategory'))

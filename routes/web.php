@@ -42,8 +42,11 @@ Route::group(['middleware' => ['AdminCheck'], 'prefix' => 'admin'],function(){
 		Route::post('/deletesubcategory/{id}','SubcategoryController@destroy');
 		Route::get('/editsubcategory/{id}','SubcategoryController@edit');
 		Route::post('/updatesubcategory','SubcategoryController@update');
+		Route::get('/addnewuser','AdminController@addnewuser');
+// Dynamic Fields of category
 
-
+		Route::get('/dynamicfields','DynamicFieldsController@home');
+		Route::get('/getsubcategory/{id}','DynamicFieldsController@getsubcategory');
 //Database Backup Routes
 		Route::get('/database_backup','MainController@databackup');
 });
@@ -57,3 +60,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/account/verify', 'UserController@verify');
 	Route::get('/setpassword','UserController@setpassword');
 	Route::post('/setpassword','UserController@set_password');
+	Route::get('/password','UserController@password');
+	Route::post('/login','UserController@userlogin');
+	Route::get('/logout','UserController@logout');
+	
+
+//Facebook route
+	  Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+  Route::get('/callback/{provider}', 'SocialController@callback');
+
+  //Google route
+
+  Route::get('/redirect/{provider}', 'GoogleController@redirect');
+ Route::get('/social/callback/{provider}', 'GoogleController@callback');
+
+ //LinkediN route
+
+  Route::get('/sociallogin/redirect/{provider}', 'LinkedinController@redirect');
+ Route::get('/sociallogin/callback/{provider}', 'LinkedinController@callback');

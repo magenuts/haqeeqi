@@ -73,6 +73,39 @@
 
 @endif
 
+<!-- @if(Session::has('useremail'))
+<div class="modal fade" id="modalpasswordForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="userloginform">
+         {!! csrf_field() !!}
+      <div class="modal-body mx-3">
+        <input type="text" name="email" value="{{ Session::get('useremail') }}">
+        <div class="md-form mb-5">
+          <i class="fa fa-envelope prefix grey-text"></i>
+           <label data-error="wrong" data-success="right" for="defaultForm-email">Your Password</label>
+          <input type="password" id="defaultForm-email" class="form-control validate" name="password">
+            <span id="subject" class="form-errors email-feedback" style="color:red;" ></span>
+        </div>
+
+       
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-success"><i class="fa fa-spinner fa-spin show-spin "></i>Login</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endif -->
 
         <header class="hero">
             <div class="hero-wrapper">
@@ -1089,6 +1122,8 @@
         @push('scripts')
        <script type="text/javascript">
            $('.myModal').modal('show');
+           $('#modalpasswordForm').modal('show');
+
        </script>
        @endpush
 @endsection
