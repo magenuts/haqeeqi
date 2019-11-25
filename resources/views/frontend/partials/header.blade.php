@@ -32,7 +32,7 @@
                                         <a class="nav-link" href="contact.html">Contact</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="submit.html" class="btn btn-primary text-caps btn-rounded">Submit Ad</a>
+                                        <a href="{{url('/adpost')}}" class="btn btn-primary text-caps btn-rounded">Submit Ad</a>
                                     </li>
                                     @if (Auth::check())
                                     <li class="nav-item">

@@ -7,6 +7,7 @@ use Image;
 use Validator;
 use File,Response,Redirect;
 use App\Category;
+use App\Subcategory;
 class CategoryController extends Controller
 {
     public function index(){
@@ -146,15 +147,23 @@ class CategoryController extends Controller
 
     }
     public function destroy($id){
+        // $category_check=Category::select('id')->where('id',$id)->first();
+        $subcategory_check=Subcategory::where('category_id','=',$id)->first();
+        if($subcategory_check){
+            return Redirect::to('admin/managecategory')->with('deletecategory','You cannot delete this category as this is attached with a subcategory');
+        }
+        else
+        {
+            $del=Category::find($id);
+            if($del->delete()){
+            unlink(public_path().'/assets/category/'.$del->image);
+            unlink(public_path().'/assets/category/thumb/'.$del->image);
 
-    	$del=Category::find($id);
-    	if($del->delete()){
-    		unlink(public_path().'/assets/category/'.$del->image);
-    		unlink(public_path().'/assets/category/thumb/'.$del->image);
-
-    		return Redirect::to('admin/managecategory')->with('deletecategory','Category has been deleted');
-    	}else{
-    		return Redirect::to('admin/managecategory')->with('deletecategory','Category not deleted');
-    	}
+            return Redirect::to('admin/managecategory')->with('deletecategory','Category has been deleted');
+        }else{
+            return Redirect::to('admin/managecategory')->with('deletecategory','Category not deleted');
+        }
+        }
+    	
     }
 }

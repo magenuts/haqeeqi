@@ -34,7 +34,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h2 class="m-b-0"><i class="mdi mdi-account-multiple text-info"></i></h2>
-                                    <h3 class="">1</h3>
+                                    <h3 class="">{{$user}}</h3>
                                     <h6 class="card-subtitle">Users</h6></div>
                                 <div class="col-12">
                                     <div class="progress">
