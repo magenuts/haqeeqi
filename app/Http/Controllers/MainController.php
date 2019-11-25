@@ -18,7 +18,9 @@ class MainController extends Controller
 
     public function dashboard(){
     	if(Session::has('adminlogin')){
-    	return view('admin.dashboard');
+            $user=User::where('type','!=','admin')->count();
+
+    	return view('admin.dashboard',compact('user'));
     	}
 	    else
 	    	return Redirect::to('admin');
