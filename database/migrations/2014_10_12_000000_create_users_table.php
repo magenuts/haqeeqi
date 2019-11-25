@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('username')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('provider');
+     $table->string('provider_id');
             $table->string('password');
             $table->string('verifyToken');
             $table->string('phone')->nullable();
@@ -26,6 +28,8 @@ class CreateUsersTable extends Migration
             $table->string('type')->nullable();
             $table->string('is_verified')->dafault('0');
             $table->string('phone_verified')->dafault('0');
+             $table->string('provider_user_id');
+          $table->string('provider');
             $table->rememberToken();
             $table->timestamps();
         });
