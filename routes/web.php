@@ -20,7 +20,7 @@ Route::get('/', function () {
 	// 	return \Hash::make($password);
 	// });
 Route::get('/admin','MainController@login');
-Route::post('admin/login','MainController@authenticate');	
+Route::post('admin/login','MainController@authenticate');
 Route::get('admin/logout','MainController@logout');
 
 Route::group(['middleware' => ['AdminCheck'], 'prefix' => 'admin'],function(){
@@ -28,7 +28,7 @@ Route::group(['middleware' => ['AdminCheck'], 'prefix' => 'admin'],function(){
 		Route::get('/dashboard','MainController@dashboard');
 		 Route::get('/users', 'MainController@getusers');
 		 Route::post('/userstatus/{id}','MainController@userstatus');
-		Route::get('/category','CategoryController@index');		
+		Route::get('/category','CategoryController@index');
 		Route::post('/addcategory','CategoryController@addcategory');
 		Route::get('/managecategory','CategoryController@managecategory');
 		Route::get('/deletecategory/{id}','CategoryController@destroy');
@@ -63,7 +63,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/password','UserController@password');
 	Route::post('/login','UserController@userlogin');
 	Route::get('/logout','UserController@logout');
-	
+	Route::get('/post','PostController@index');
+	Route::get('/subcategorylist','PostController@subcategorylist');
+	Route::get('/postad/{maincategoryid}/{subcategoryid}','PostController@postad');
 
 //Facebook route
 	  Route::get('/auth/redirect/{provider}', 'SocialController@redirect');

@@ -4,7 +4,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <a href="#" class="brand">
-                                <img src="assets/img/logo.png" alt="">
+                                <img src="{{url('/')}}/assets/img/logo.png" alt="">
                             </a>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec tincidunt arcu, sit amet
@@ -79,7 +79,7 @@
                 </div>
                 <div class="background">
                     <div class="background-image original-size">
-                        <img src="assets/img/footer-background-icons.jpg" alt="">
+                        <img src="{{url('/')}}/assets/img/footer-background-icons.jpg" alt="">
                     </div>
                     <!--end background-image-->
                 </div>

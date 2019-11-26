@@ -39,7 +39,7 @@
             <span id="subject" class="form-errors email-feedback" style="color:red;" ></span>
         </div>
 
-       
+
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
@@ -58,18 +58,19 @@
            </div>
     </div>
 
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="{{url('/')}}/assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="{{url('/')}}/assets/js/popper.min.js"></script>
     <script type="text/javascript" src="{{url('/')}}/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58&libraries=places"></script>
-    <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>-->
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDvcV2TrAv-b3kt1b9yxDznAEWgx8hvYPE&libraries=places"></script>
     <script src="{{url('/')}}/assets/js/selectize.min.js"></script>
     <script src="{{url('/')}}/assets/js/masonry.pkgd.min.js"></script>
     <script src="{{url('/')}}/assets/js/icheck.min.js"></script>
     <script src="{{url('/')}}/assets/js/jquery.validate.min.js"></script>
     <script src="{{url('/')}}/assets/js/custom.js"></script>
+    <script src="{{url('/')}}/assets/js/jQuery.MultiFile.min.js"></script>
+
     <script type="text/javascript">
-      
+
     </script>
     @stack('scripts')
 </body>
