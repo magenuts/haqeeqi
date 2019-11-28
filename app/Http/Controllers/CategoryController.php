@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $category_list = Category::latest('created_at')->get();
 
         // if ($request->ajax()) {
-        //     return view('admin.categoryload', ['category_list' => $category_list])->render();  
+        //     return view('admin.categoryload', ['category_list' => $category_list])->render();
         // }
 
         return view('admin.managecategory', compact('category_list'));
@@ -77,8 +77,8 @@ class CategoryController extends Controller
             }
         }
     	}
-    	
-    
+
+
     }
 
     public function edit($id){
@@ -101,7 +101,7 @@ class CategoryController extends Controller
     		return Response::json(['success'=>'0','validation'=>'0','message'=>$validator->errors()]);
     	}else{
     		$category=Category::find($request->id);
-    	
+
         $image=$request->image;
         if(empty($image)){
         	$category->category_name=$request->category_name;
@@ -127,8 +127,8 @@ class CategoryController extends Controller
           }
           $img->save($destinationPath.'/thumb/'.$filename);
           $category->image=$filename;
-            
-        }	
+
+        }
 
 	if($category->save()){
        //      	unlink(public_path().'/assets/category/'.$category->image);
@@ -142,7 +142,7 @@ class CategoryController extends Controller
 
             }
         }
-    	
+
 
 
     }
@@ -164,6 +164,6 @@ class CategoryController extends Controller
             return Redirect::to('admin/managecategory')->with('deletecategory','Category not deleted');
         }
         }
-    	
+
     }
 }

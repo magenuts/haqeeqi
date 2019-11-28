@@ -66,6 +66,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/post','PostController@index');
 	Route::get('/subcategorylist','PostController@subcategorylist');
 	Route::get('/postad/{maincategoryid}/{subcategoryid}','PostController@postad');
+	Route::post('/submitpost','PostController@submitpost');
 
 //Facebook route
 	  Route::get('/auth/redirect/{provider}', 'SocialController@redirect');

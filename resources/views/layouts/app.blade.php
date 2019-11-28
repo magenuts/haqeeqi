@@ -61,15 +61,26 @@
     <script src="{{url('/')}}/assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="{{url('/')}}/assets/js/popper.min.js"></script>
     <script type="text/javascript" src="{{url('/')}}/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDvcV2TrAv-b3kt1b9yxDznAEWgx8hvYPE&libraries=places"></script>
     <script src="{{url('/')}}/assets/js/selectize.min.js"></script>
     <script src="{{url('/')}}/assets/js/masonry.pkgd.min.js"></script>
     <script src="{{url('/')}}/assets/js/icheck.min.js"></script>
     <script src="{{url('/')}}/assets/js/jquery.validate.min.js"></script>
-    <script src="{{url('/')}}/assets/js/custom.js"></script>
     <script src="{{url('/')}}/assets/js/jQuery.MultiFile.min.js"></script>
 
-    <script type="text/javascript">
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBLOf3x9pp3d0iaaosvmzqQ6A0iW4eKRNI&libraries=places"></script>
+    <script src="{{url('/')}}/assets/js/custom.js"></script>
+
+  <script type="text/javascript">
+
+  
+     //
+     // var latitude = 51.511971;
+     // var longitude = -0.137597;
+     // var markerImage = "{{url('/')}}/assets/img/map-marker.png";
+     // var mapTheme = "light";
+     // var mapElement = "map-submit";
+     // var markerDrag = true;
+     // simpleMap(latitude, longitude, markerImage, mapTheme, mapElement, markerDrag);
 
     </script>
     @stack('scripts')
