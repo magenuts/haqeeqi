@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    
+
  @if(Session::has('passwordset'))
 <!-- Central Modal Medium Danger -->
 <div class="modal fade myModal" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -28,7 +28,7 @@
 
       <!--Footer-->
       <div class="modal-footer justify-content-center">
-       
+
         <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Ok</a>
       </div>
     </div>
@@ -63,7 +63,42 @@
 
       <!--Footer-->
       <div class="modal-footer justify-content-center">
-       
+
+        <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Ok</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+@elseif(Session::has('post_success'))
+
+<div class="modal fade myModal" id="bottomModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Information</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+          <p>Congratulations!
+        {{Session::get('post_success')}}.</p>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+
         <a type="button" class="btn btn-outline-danger waves-effect" data-dismiss="modal">Ok</a>
       </div>
     </div>
@@ -72,6 +107,7 @@
 </div>
 
 @endif
+
 
 <!-- @if(Session::has('useremail'))
 <div class="modal fade" id="modalpasswordForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -95,7 +131,7 @@
             <span id="subject" class="form-errors email-feedback" style="color:red;" ></span>
         </div>
 
-       
+
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
@@ -110,9 +146,9 @@
         <header class="hero">
             <div class="hero-wrapper">
                 <!--============ Secondary Navigation ===============================================================-->
-               
+
                 @include('frontend.partials.header')
-              
+
                 <div class="page-title">
                     <div class="container">
                         <h1 class="opacity-60 center">
