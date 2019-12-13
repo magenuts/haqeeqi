@@ -29,7 +29,7 @@ $(document).ready(function($) {
     select.selectize({
         onDropdownOpen: dropdownOpen,
         onDropdownClose: dropdownClose,
-        allowEmptyOption: true,        
+        allowEmptyOption: true,
     });
 
     function dropdownOpen($dropdown){
@@ -461,7 +461,9 @@ function autoComplete(map, marker){
         });
 
         $('.geo-location').on("click", function(e) {
+
             e.preventDefault();
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(success);
             } else {
@@ -488,6 +490,10 @@ function autoComplete(map, marker){
                         latlng = new google.maps.LatLng(lat, lng);
 
                     $("#input-location").val(results[0].formatted_address);
+                    // $("#state").val(results[0].address_components[8].short_name);
+                    //
+                    // $("#city").val(results[0].address_components[5].short_name);
+
                     var latitudeInput = $('#latitude');
                     var longitudeInput = $("#longitude");
                     if( latitudeInput.length ){
@@ -518,7 +524,7 @@ if( $("#input-location2").length ){
 		if (!place.geometry) {
 			return;
 		}
-	});       
+	});
 }
 */
 
